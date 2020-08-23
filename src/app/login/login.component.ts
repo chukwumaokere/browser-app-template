@@ -41,6 +41,18 @@ export class LoginComponent implements OnInit {
     //this.router.navigateByUrl('/login'); //this would cause an infinite loop on this page. but it should be used on other pages to force others to log in.
   }
 
+  onKey(event: any){
+    //console.log(event);
+    var value = event.target.value;
+    var field = event.target.name;
+    if (field == 'email'){
+      this.username = value;6
+    }
+    if (field == 'password'){
+      this.password = value;
+    }
+  }
+
   //example usage
   login(method){
     const data = { 
