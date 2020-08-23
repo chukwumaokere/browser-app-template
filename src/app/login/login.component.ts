@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   //example usage
-  login(){
+  login(method){
     const data = { 
       username: this.username,
       password: this.password
