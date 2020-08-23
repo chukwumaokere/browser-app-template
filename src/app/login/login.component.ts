@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AppConfig } from '../app-config';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+  loginForm;
   loggedin: Boolean;
   userid: Number;
   userdata: any;
@@ -24,10 +26,15 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpClient,
-    public AppConfig: AppConfig
+    public AppConfig: AppConfig,
+    private formBuilder: FormBuilder,
   ) {
     this.apiurl = this.AppConfig.apiurl;
     this.vturl = this.AppConfig.vturl;
+    this.loginForm = this.formBuilder.group({
+      username: '',
+      password: '',
+    })
    }
 
   ngOnInit(): void {
