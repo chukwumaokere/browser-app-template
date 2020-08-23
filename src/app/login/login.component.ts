@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   vturl: any;
   loading: any;
   dataReturned: any;
-  username: any;
-  password: any;
+  //username: any;
+  //password: any;
 
   constructor(
     private router: Router,
@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
     //this.router.navigateByUrl('/login'); //this would cause an infinite loop on this page. but it should be used on other pages to force others to log in.
   }
 
+  /* Deprecated method
   onKey(event: any){
     //console.log(event);
     var value = event.target.value;
@@ -59,13 +60,17 @@ export class LoginComponent implements OnInit {
       this.password = value;
     }
   }
+  */
 
   //example usage
-  login(method){
+  login(value){
     const data = { 
-      username: this.username,
-      password: this.password
+      username: value.username,
+      password: value.password
     }
+    //console.log(value);
+    
+    /*
     const headers = new HttpHeaders();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -83,6 +88,7 @@ export class LoginComponent implements OnInit {
         }
       }, error =>{
         console.log(error);
-      })
+      })*/
+      this.router.navigateByUrl('/orders');
   }
 }
