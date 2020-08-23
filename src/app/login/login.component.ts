@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(this.loggedin == false){
+    if(this.loggedin !== true){
       this.logout();
     }
   }
 
   logout(){
     console.log('logging out');
-    this.router.navigateByUrl('/login');
+    //this.router.navigateByUrl('/login'); //this would cause an infinite loop on this page. but it should be used on other pages to force others to log in.
   }
 
   //example usage
