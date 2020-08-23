@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   vturl: any;
   loading: any;
   dataReturned: any;
+  username: any;
+  password: any;
 
   constructor(
     private router: Router,
@@ -39,13 +41,17 @@ export class LoginComponent implements OnInit {
   }
 
   //example usage
-  loadOrders(){
+  login(){
+    const data = { 
+      username: this.username,
+      password: this.password
+    }
     const headers = new HttpHeaders();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Access-Control-Allow-Origin', '*');
 
-    this.httpClient.get(this.apiurl + 'getorders.php', {headers, observe: 'response'})
+    this.httpClient.post(this.apiurl + 'login.php', data, {headers, observe: 'response'})
       .subscribe(data =>{
         const responseData = data.body;
         const success = responseData['success'];
